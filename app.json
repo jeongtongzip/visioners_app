@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "vigorous-yellow-churros",
+    "name": "짐을싸자",
     "slug": "snack-618cbb31-20e5-43e6-9eae-d31e580815b7",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -21,7 +21,8 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.hhhmmm3.snack618cbb3120e543e69eaed31e580815b7"
     },
     "web": {
       "favicon": "./assets/favicon.png"

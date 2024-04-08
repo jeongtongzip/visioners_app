@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
   },
   description2: {
     fontSize: 20,
-    lineHeight: 50, // 원하는 줄 간격 값으로 설정
+    lineHeight: 50,
     fontWeight: 'bold',
     color: 'white',
     textAlign: 'center',

@@ -16,10 +16,10 @@ const Stack = createStackNavigator();
 
 function App() {
   useEffect(() => {
-    // 3초 후에 스플래시 화면 숨기기
+    // 7초 후에 스플래시 화면 숨기기
     setTimeout(async () => {
       await SplashScreen.hideAsync();
-    }, 3000);
+    }, 7000);
   }, []);
 
   return (

@@ -1,25 +1,24 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import { Camera } from 'expo-camera';
+import * as MediaLibrary from 'expo-media-library'; // 모듈 추가
 
 export default function International() {
   const [hasPermission, setHasPermission] = useState(null);
   const cameraRef = useRef(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 
-  useEffect(() => {
+   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestCameraPermissionsAsync();
-      setHasPermission(status === 'granted');
+      const cameraStatus = await Camera.requestCameraPermissionsAsync();
+      setHasPermission(cameraStatus.status === 'granted');
+
+      const mediaLibraryStatus = await MediaLibrary.requestPermissionsAsync(); // 미디어 라이브러리 권한 요청
+      if (mediaLibraryStatus.status !== 'granted') {
+        alert('사진 저장을 위한 접근 권한이 필요합니다.');
+      }
     })();
   }, []);
-
-  if (hasPermission === null) {
-    return <View />;
-  }
-  if (hasPermission === false) {
-    return <Text>No access to camera</Text>;
-  }
 
   const switchCamera = () => {
     setType(type === Camera.Constants.Type.back ? Camera.Constants.Type.front : Camera.Constants.Type.back);
@@ -27,8 +26,9 @@ export default function International() {
 
   const takePicture = async () => {
     if (cameraRef.current) {
-      let photo = await cameraRef.current.takePictureAsync();
-      console.log('photo', photo);
+      const photo = await cameraRef.current.takePictureAsync();
+      const asset = await MediaLibrary.createAssetAsync(photo.uri); // 사진을 갤러리에 저장
+      console.log('photo saved', asset);
     }
   };
 
@@ -51,7 +51,7 @@ export default function International() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'flex-end', // 하단에 배치
+    justifyContent: 'flex-end',
     alignItems: 'center',
   },
   camera: {
@@ -60,17 +60,19 @@ const styles = StyleSheet.create({
     height: '100%',
   },
   buttonContainer: {
+    position: 'absolute',
+    bottom: 0,
     flexDirection: 'row',
-    justifyContent: 'center', // 버튼들을 중앙정렬
-    marginBottom: 20,
-    marginTop: 700, // 화면 하단부와의 여백
+    justifyContent: 'center',
+    width: '100%',
+    paddingBottom: 20, 
   },
   button: {
     borderWidth: 1,
     borderRadius: 5,
     paddingVertical: 10,
     paddingHorizontal: 20,
-    marginHorizontal: 20, // 버튼 사이의 간격 조정
+    marginHorizontal: 20,
     borderColor: 'white',
     backgroundColor: 'transparent',
     alignItems: 'center',

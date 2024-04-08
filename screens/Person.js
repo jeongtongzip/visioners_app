@@ -49,9 +49,9 @@ const styles = StyleSheet.create({
     marginBottom: 100,
   },
   buttonRow: {
-    flexDirection: 'row', // 버튼을 가로로 정렬합니다.
-    flexWrap: 'wrap', // 내용이 넘칠 경우 다음 줄로 넘깁니다.
-    marginBottom: 20, // 설명 텍스트와의 간격
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    marginBottom: 20,
   },
   button: {
     borderWidth: 1,
@@ -59,12 +59,12 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     paddingVertical: 7,
     paddingHorizontal: 12,
-    margin: 5, // 버튼 간의 간격
-    backgroundColor: 'transparent', // 버튼 배경색을 투명하게 설정
+    margin: 5,
+    backgroundColor: 'transparent',
   },
   buttonText: {
-    color: 'white', // 텍스트 색상을 하얀색으로 설정
-    fontSize: 15, // 폰트 크기 설정
+    color: 'white',
+    fontSize: 15,
   },
   description: {
     fontSize: 16,

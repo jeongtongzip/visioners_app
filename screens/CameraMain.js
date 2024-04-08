@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
   },
   textContainer: {
     marginBottom: 60,
-    marginTop: 90, // 텍스트를 아래쪽으로 이동합니다.
+    marginTop: 90,
   },
   title: {
     fontFamily: 'Abster',
